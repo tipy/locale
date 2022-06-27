@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "emitDeclarationOnly": false,
+    "declaration": true,
+    "target": "es6",
+    "lib": ["es6"],
+    "strict": true,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "outDir": "lib",
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.test.*"]
+}
