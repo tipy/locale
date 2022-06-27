@@ -7,8 +7,7 @@ type JSONObject = {
 interface JSONArray extends Array<JSONValue> {}
 
 export type Options = {
-  language?: string;
-  fallbackLanguage?: string;
   resource: JSONValue;
+  fallbackResource?: JSONValue;
   separator?: string;
 };

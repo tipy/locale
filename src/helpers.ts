@@ -1,8 +1,7 @@
 import { Options, JSONValue } from './types';
 
 export const defaultOptions: Options = {
-  language: 'en',
-  fallbackLanguage: '',
+  fallbackResource: {},
   separator: '.',
   resource: {},
 };

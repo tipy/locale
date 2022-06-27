@@ -13,10 +13,18 @@ export const init = (options?: Options) => {
   };
 };
 
+export const change = (options?: Options) => {
+  locale = {
+    ...defaultOptions,
+    ...locale,
+    ...options,
+  };
+};
+
 export const t = (key: string) => {
   const split = key.split(locale?.separator || '.');
   const resource = locale?.resource || en;
-  const fallbackResource = locale?.fallbackLanguage || en;
+  const fallbackResource = locale?.fallbackResource || en;
 
   if (!key) return 'Key has not been passed!';
   if (!resource)

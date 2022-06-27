@@ -1,6 +1,6 @@
 {
   "name": "@tipy/locale",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "description": "Locale is a super tiny language handling library",
@@ -8,6 +8,7 @@
   "author": "gustavo.isensee@gmail.com",
   "license": "MIT",
   "scripts": {
+    "test": "jest src/",
     "ts-types": "tsc",
     "build": "rimraf lib && yarn ts-types && node ./esbuild.js"
   },
