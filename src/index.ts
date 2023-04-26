@@ -20,10 +20,10 @@ export const update = (options?: Options) => {
   };
 };
 
-export const t = (key: string) => {
+export const t = (key: string): string => {
   const separator = locale?.separator || '.';
   const resources = locale?.resources || [];
-  
+
   if (!key) return 'Key has not been passed.';
   if (typeof key !== 'string')
     return 'Key must be a string. for example: t("person.name")';
@@ -39,8 +39,8 @@ export const t = (key: string) => {
     for (const k of split) {
       current = current?.[k];
     }
-    if (current) return current;
+    if (current) return current as string;
   }
 
-  return current || `Key not found: ${key}`;
+  return current as string || `Key not found: ${key}`;
 };
