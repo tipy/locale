@@ -1,13 +1,8 @@
-export type JSONValue = string | JSONObject | JSONArray;
-
-type JSONObject = {
-  [x: string]: JSONValue;
+export type JSONObject = {
+  [x: string]: string | boolean | number | object;
 };
 
-interface JSONArray extends Array<JSONValue> {}
-
 export type Options = {
-  resource: JSONValue;
-  fallbackResource?: JSONValue;
+  resources: JSONObject[];
   separator?: string;
 };

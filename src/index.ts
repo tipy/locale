@@ -1,6 +1,5 @@
 import { Options } from './types';
-import { defaultOptions, getCurrent } from './helpers';
-import en from './assets/en.json';
+import { defaultOptions } from './helpers';
 
 export let locale: Options = {
   ...defaultOptions,
@@ -13,7 +12,7 @@ export const init = (options?: Options) => {
   };
 };
 
-export const change = (options?: Options) => {
+export const update = (options?: Options) => {
   locale = {
     ...defaultOptions,
     ...locale,
@@ -22,17 +21,25 @@ export const change = (options?: Options) => {
 };
 
 export const t = (key: string) => {
-  const split = key.split(locale?.separator || '.');
-  const resource = locale?.resource || en;
-  const fallbackResource = locale?.fallbackResource || en;
+  const separator = locale?.separator || '.';
+  const resources = locale?.resources || [];
+  
+  if (!key) return 'Key has not been passed.';
+  if (typeof key !== 'string')
+    return 'Key must be a string. for example: t("person.name")';
+  if (!resources || resources.length === 0)
+    return 'Your resources is empty, check if you called `init` function first.';
+  if (!Array.isArray(resources))
+    return 'Your resources must be an array. for example: [{ name: "Gus" }].'
 
-  if (!key) return 'Key has not been passed!';
-  if (!resource)
-    return 'Your resource is empty, check if you called `init` function first.';
-
-  let current = getCurrent(resource, fallbackResource, split);
-  for (let i = 1; i < split.length; i++) {
-    current = current?.[split[i]];
+  const split = key.split(separator);
+  let current = {};
+  for (const r of resources) {
+    current = r;
+    for (const k of split) {
+      current = current?.[k];
+    }
+    if (current) return current;
   }
 
   return current || `Key not found: ${key}`;
