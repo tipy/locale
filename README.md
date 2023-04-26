@@ -52,7 +52,7 @@ You can opt for a more robust library such as i18n, but if your application does
 so, Why use it?
 `tipy/locale` has only 1 goal, load resources and get the translations from them, **exactly!** from them!
 
-## fallbacks
+## Fallback
 
 `tipy/locale` automatically fallback to the next resource passed in the array, let's put this in an example.
 Assuming you have 2 resources but the key you're looking for is not present in the first locale, `tipy/locale` will automatically search for the key in the other locales, from left to right in the array of resources.
